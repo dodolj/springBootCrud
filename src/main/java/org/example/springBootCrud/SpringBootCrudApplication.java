@@ -1,4 +1,4 @@
-package org.example.springbootcrud;
+package org.example.springBootCrud;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
