@@ -49,15 +49,13 @@
             <tbody>
                 <tr th:each="user : ${users}">
                     <td>
-                        <a th:href="@{users/user-update/{id}(id=${user.id})}" th:text="${user.id}" style="text-decoration: none; color: darkslategrey;"></a>
+                        <a th:href="@{/users/user-update/{id}(id=${user.id})}"
+                           th:text="${user.id}" style="color: darkcyan;"></a>
                     </td>
                     <td th:text="${user.name}"></td>
                     <td th:text="${user.password}"></td>
                     <td style="padding: 0; border: 0 solid #ddd; width: auto;">
-                        <button style="padding: 0; width: 50%; box-sizing: border-box;"
-                                onclick="window.location.href='@{/users/user-delete/{id}(id=${user.id})}'">
-                            Delete
-                        </button>
+                        <a th:href="@{/users/user-delete/{id}(id=${user.id})}" style="color: red; cursor: pointer;">Delete</a>
                     </td>
                 </tr>
             </tbody>
