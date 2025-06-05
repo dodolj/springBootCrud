@@ -55,7 +55,12 @@
                     <td th:text="${user.name}"></td>
                     <td th:text="${user.password}"></td>
                     <td style="padding: 0; border: 0 solid #ddd; width: auto;">
-                        <a th:href="@{/users/user-delete/{id}(id=${user.id})}" style="color: red; cursor: pointer;">Delete</a>
+                        <form th:action="@{/users/user-delete/{id}(id=${user.id})}" method="post" style="display: inline;">
+                            <button type="submit"
+                                    style="background: none; border: none; color: red; cursor: pointer; padding: 0; text-decoration: underline;">
+                                Delete
+                            </button>
+                        </form>
                     </td>
                 </tr>
             </tbody>

@@ -2,18 +2,17 @@ package org.example.springBootCrud.controller;
 
 import org.example.springBootCrud.model.User;
 import org.example.springBootCrud.service.UserService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
 
 @Controller
 @RequestMapping("/users")
 public class UserController {
+
     private final UserService userService;
 
     public UserController(UserService userService) {
@@ -38,21 +37,21 @@ public class UserController {
         return "redirect:/users";
     }
 
-    @GetMapping("/user-delete/{id}")
-    public String deleteUser(@PathVariable("id") UUID id) {
+    @PostMapping("/user-delete/{id}")
+    public String deleteUser(@PathVariable UUID id) {
         userService.deleteById(id);
         return "redirect:/users";
     }
 
     @GetMapping("/user-update/{id}")
-    public String updateUserForm(@PathVariable("id") UUID id, Model model){
+    public String updateUserForm(@PathVariable("id") UUID id, Model model) {
         User user = userService.findById(id);
         model.addAttribute("user", user);
         return "user-update";
     }
 
-    @PostMapping("/user-update")
-    public String updateUser(User user) {
+    @PutMapping("/user-update")
+    public String updateUser(@ModelAttribute User user) {
         userService.saveUser(user);
         return "redirect:/users";
     }
